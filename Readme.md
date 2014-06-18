@@ -23,7 +23,7 @@ This project was built to showcase how easy it is to Re-host the .NET Windows Wo
 
 ### A few links..
 * Introduction to Windows Workflow Foundation  http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3 
-* Windows Workflow Foundation ( WF ) http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx 
+* Windows Workflow Foundation ( WWF ) http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx 
 * Windows Presentation Foundation ( WPF ) http://msdn.microsoft.com/en-us/library/ms754130(v=vs.110).aspx 
 * Meetup.Com REST API http://www.meetup.com/meetup_api/ 
 
