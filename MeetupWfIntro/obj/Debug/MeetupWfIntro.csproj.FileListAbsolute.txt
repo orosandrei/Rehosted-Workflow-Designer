@@ -1,0 +1,90 @@
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.exe.config
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\defaultWorkflow.xaml
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.exe
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.pdb
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\MeetupActivityLibrary.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Build.Activities.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Build.Workflow.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Deployment.Workflow.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Newtonsoft.Json.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\MeetupActivityLibrary.pdb
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.pdb
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.xml
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.pdb
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.xml
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.WITDataStore.dll
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.csprojResolveAssemblyReference.cache
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\Views\MainWindow.baml
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\Views\MainWindow.g.cs
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\App.g.cs
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro_MarkupCompile.cache
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.g.resources
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.Properties.Resources.resources
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.csproj.GenerateResource.Cache
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.exe
+D:\DigiStorage\Jobs\Meetup dot NET\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.pdb
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.exe.config
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.exe
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.pdb
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\defaultWorkflow.xaml
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.exe
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.pdb
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\MeetupActivityLibrary.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Build.Activities.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Build.Workflow.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Deployment.Workflow.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\MeetupActivityLibrary.pdb
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.pdb
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.xml
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.pdb
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.xml
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.WITDataStore.dll
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.csprojResolveAssemblyReference.cache
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\Views\MainWindow.baml
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\App.g.cs
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro_MarkupCompile.cache
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.g.resources
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.Properties.Resources.resources
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.csproj.GenerateResource.Cache
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\SampleWorkflow\meetup.xaml
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro_MarkupCompile.lref
+C:\Users\Andrei\Desktop\.net tm meetup\code\MeetupWfIntro\MeetupWfIntro\bin\Debug\System.Activities.Core.Presentation.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.exe.config
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.exe
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.pdb
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\defaultWorkflow.xaml
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\SampleWorkflow\meetup.xaml
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.exe
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Meetup WF Intro.pdb
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\MeetupActivityLibrary.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Build.Activities.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\System.Activities.Core.Presentation.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Build.Workflow.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.Deployment.Workflow.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\MeetupActivityLibrary.pdb
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.pdb
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.Windows.Shell.xml
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.pdb
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\RibbonControlsLibrary.xml
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\bin\Debug\Microsoft.WITDataStore.dll
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.csprojResolveAssemblyReference.cache
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\App.g.cs
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro_MarkupCompile.cache
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro_MarkupCompile.lref
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\Views\MainWindow.baml
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\Meetup WF Intro.g.resources
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.Properties.Resources.resources
+C:\Users\Andrei\Desktop\MeetupWfIntro\MeetupWfIntro\obj\Debug\MeetupWfIntro.csproj.GenerateResource.Cache
