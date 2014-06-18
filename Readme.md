@@ -1,25 +1,38 @@
 Rehosted Workflow Designer
 ==========================
 
-This project was built to showcase at Timisoara .NET Meetup < http://www.meetup.com/Timisoara-NET-Meetup/ > how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. 
+This project was built to showcase at Timisoara .NET Meetup http://www.meetup.com/Timisoara-NET-Meetup/ how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. 
 
 The Solution contains 2 projects:
-* WPF Desktop Application
-* Custom Activity Library
 
+### WPF Desktop Application
+* Workflow Designer - Rehosting in a WPF Aplication
+* ToolboxControl - Loading Workflow Activities from Assemblies
+* Workflow Execution - retrieve Execution Log (TrackData) and Execution Output(s)
+* Workflow Management - New / Open / Save / Run
 
-### Technology
+### Activity Library - Custom Activities
+* ShowMessageBox - displays in a MessageBox the Value of the InputData argument
+* GetGroupMembers - retrieves the Member Names and Count for a specified Meetup.Com Group
+* GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event
 
-* .NET 4.5
-* Windows Workflow Foundation ( WF ) < http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx >
-* Windows Presentation Foundation ( WPF ) < http://msdn.microsoft.com/en-us/library/ms754130(v=vs.110).aspx >
-* Meetup.Com REST API < http://www.meetup.com/meetup_api/ >
+### Demo Workflow - meetup.xaml
+* InArguments - Meetup.COM REST API Key and RSVP (true / false)
+* If RSVP = false - the Workflow outputs a list with the Members of a Meetup.Com Group
+* If RSVP = true - the Workflow outputs a list with the Attending Members of a Meetup.Com Event
 
+***
 
-### A few links...
-* Introduction to Windows Workflow Foundation < http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3 > 
-* Twitter: < http://twitter.com/orosandrei >
-* E-mail: < hello@andreioros.com >
+### A few links..
+* Introduction to Windows Workflow Foundation  http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3 
+* Windows Workflow Foundation ( WF ) http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx 
+* Windows Presentation Foundation ( WPF ) http://msdn.microsoft.com/en-us/library/ms754130(v=vs.110).aspx 
+* Meetup.Com REST API http://www.meetup.com/meetup_api/ 
+
+***
+
+* Twitter: http://twitter.com/orosandrei
+* E-mail: hello@andreioros.com
 
 ***
 
