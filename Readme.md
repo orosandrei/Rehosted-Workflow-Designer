@@ -1,9 +1,7 @@
 Rehosted Workflow Designer
 ==========================
 
-This project was built to showcase at Timisoara .NET Meetup http://www.meetup.com/Timisoara-NET-Meetup/ how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. 
-
-The Solution contains 2 projects:
+This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. The solution contains:
 
 ### WPF Desktop Application
 * Workflow Designer - Rehosting in a WPF Aplication
@@ -33,6 +31,7 @@ The Solution contains 2 projects:
 
 * Twitter: http://twitter.com/orosandrei
 * E-mail: hello@andreioros.com
+* Project Showcased at Timisoara .NET Meetup 2 http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/
 
 ***
 
