@@ -1,7 +1,11 @@
-Rehosted Workflow Designer
+.NET Flowchart Workflow Designer
 ==========================
 
-This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. The solution contains:
+This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. 
+
+![Alt text](flowchart-workflow-designer.png?raw=true ".NET Flowchart Workflow Designer")
+
+The solution contains:
 
 ### WPF Desktop Application
 * Workflow Designer - Rehosting in a WPF Aplication
