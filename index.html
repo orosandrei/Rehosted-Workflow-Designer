@@ -1,65 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>Flowchart Workflow Designer by orosandrei</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>/Flowchart-Workflow-Designer by orosandrei</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Flowchart Workflow Designer</h1>
+        <p class="header">.NET Workflow Designer Rehosting &amp; Custom Activity Library Example</p>
 
-        <header>
-          <h1>/Flowchart-Workflow-Designer</h1>
-          <h2>.NET Workflow Designer Rehosting &amp; Custom Activity Library Example</h2>
-        </header>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/orosandrei/Flowchart-Workflow-Designer/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/orosandrei/Flowchart-Workflow-Designer/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/orosandrei/Flowchart-Workflow-Designer">View On GitHub</a></li>
+        </ul>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/orosandrei/Flowchart-Workflow-Designer/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/orosandrei/Flowchart-Workflow-Designer/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/orosandrei/Flowchart-Workflow-Designer" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/orosandrei">orosandrei</a></p>
 
-        <hr>
 
-        <section id="main_content">
-          <h1>
+      </header>
+      <section>
+        <h1>
 <a name="net-flowchart-workflow-designer" class="anchor" href="#net-flowchart-workflow-designer"><span class="octicon octicon-link"></span></a>.NET Flowchart Workflow Designer</h1>
 
-<p>This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. The solution contains:</p>
+<p>This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. </p>
 
-<h3>
-<a name="wpf-desktop-application" class="anchor" href="#wpf-desktop-application"><span class="octicon octicon-link"></span></a>WPF Desktop Application</h3>
+<p><img src="https://github.com/orosandrei/Flowchart-Workflow-Designer/raw/master/flowchart-workflow-designer.png?raw=true?raw=true" alt="Alt text" title=".NET Flowchart Workflow Designer"></p>
+
+<p>The solution contains:</p>
+
+<h2>
+<a name="wpf-desktop-application" class="anchor" href="#wpf-desktop-application"><span class="octicon octicon-link"></span></a>WPF Desktop Application</h2>
 
 <ul>
 <li>Workflow Designer - Rehosting in a WPF Aplication</li>
 <li>ToolboxControl - Loading Workflow Activities from Assemblies</li>
 <li>Workflow Execution - retrieve Execution Log (TrackData) and Execution Output(s)</li>
 <li>Workflow Management - New / Open / Save / Run</li>
-</ul><h3>
-<a name="activity-library---custom-activities" class="anchor" href="#activity-library---custom-activities"><span class="octicon octicon-link"></span></a>Activity Library - Custom Activities</h3>
+</ul><h2>
+<a name="activity-library---custom-activities" class="anchor" href="#activity-library---custom-activities"><span class="octicon octicon-link"></span></a>Activity Library - Custom Activities</h2>
 
 <ul>
 <li>ShowMessageBox - displays in a MessageBox the Value of the InputData argument</li>
 <li>GetGroupMembers - retrieves the Member Names and Count for a specified Meetup.Com Group</li>
 <li>GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event</li>
-</ul><h3>
-<a name="demo-workflow---meetupxaml" class="anchor" href="#demo-workflow---meetupxaml"><span class="octicon octicon-link"></span></a>Demo Workflow - meetup.xaml</h3>
+</ul><h2>
+<a name="demo-workflow---meetupxaml" class="anchor" href="#demo-workflow---meetupxaml"><span class="octicon octicon-link"></span></a>Demo Workflow - meetup.xaml</h2>
 
 <ul>
 <li>InArguments - Meetup.COM REST API Key and RSVP (true / false)</li>
 <li>If RSVP = false - the Workflow outputs a list with the Members of a Meetup.Com Group</li>
 <li>If RSVP = true - the Workflow outputs a list with the Attending Members of a Meetup.Com Event</li>
-</ul><hr><h3>
-<a name="a-few-links" class="anchor" href="#a-few-links"><span class="octicon octicon-link"></span></a>A few links..</h3>
+</ul><hr><h2>
+<a name="a-few-links" class="anchor" href="#a-few-links"><span class="octicon octicon-link"></span></a>A few links..</h2>
 
 <ul>
 <li>Introduction to Windows Workflow Foundation  <a href="http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3">http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3</a> </li>
@@ -74,15 +77,12 @@
 <li>Project Showcased at Timisoara .NET Meetup 2 <a href="http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/">http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/</a>
 </li>
 </ul><hr><p>Enjoy!</p>
-        </section>
-
-        <footer>
-          /Flowchart-Workflow-Designer is maintained by <a href="https://github.com/orosandrei">orosandrei</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
