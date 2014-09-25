@@ -1,5 +1,9 @@
 .NET Flowchart Workflow Designer
+<<<<<<< HEAD
 ==========================
+=======
+================================
+>>>>>>> 8cd291540193b78143b362216ad3c2dd498f8b62
 
 This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. 
 

@@ -1,36 +1,68 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
 
-# Folder config file
-Desktop.ini
+#Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+[Oo]bj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+#MonoDevelop
+*.pidb
+*.userprefs
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+*.sass-cache
 
-# =========================
-# Operating System Files
-# =========================
+#Project files
+[Bb]uild/
 
-# OSX
-# =========================
+#Subversion files
+.svn
 
-.DS_Store
-.AppleDouble
-.LSOverride
+# Office Temp Files
+~$*
 
-# Icon must ends with two \r.
-Icon
+# vim Temp Files
+*~
 
-# Thumbnails
-._*
+#NuGet
+packages/
+*.nupkg
 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
+#ncrunch
+*ncrunch*
+*crunch*.local.xml
+
+# visual studio database projects
+*.dbmdl
+
+#Test files
+*.testsettings
