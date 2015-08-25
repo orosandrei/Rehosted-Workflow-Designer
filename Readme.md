@@ -1,6 +1,6 @@
-#.NET Flowchart Workflow Designer#
+#.NET Rehosted Workflow Designer#
 
-This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. 
+This project was built to showcase how easy it is to Rehost the .NET Windows Workflow Foundation Workflow Designer. 
 
 ![Alt text](https://github.com/orosandrei/Flowchart-Workflow-Designer/raw/master/flowchart-workflow-designer.png?raw=true?raw=true ".NET Flowchart Workflow Designer")
 
