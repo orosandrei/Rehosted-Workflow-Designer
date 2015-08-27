@@ -1,7 +1,5 @@
 #.NET Rehosted Workflow Designer#
 
-This project was built to showcase how easy it is to Rehost the .NET Windows Workflow Foundation Designer 
-
 ![Alt text](https://github.com/orosandrei/Rehosted-Workflow-Designer/raw/master/rehosted-workflow-designer.png?raw=true ".NET Rehosted Workflow Designer")
 
 The solution contains:
@@ -12,7 +10,7 @@ The solution contains:
 * Workflow Execution - retrieve Execution Log (TrackData) and Execution Output(s)
 * Workflow Management - New / Open / Save / Run
 
-##Activity Library - Custom Activities## 
+##Activity Library - Custom Activities##
 * ShowMessageBox - displays in a MessageBox the Value of the InputData argument
 * GetGroupMembers - retrieves the Member Names and Count for a specified Meetup.Com Group
 * GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event
