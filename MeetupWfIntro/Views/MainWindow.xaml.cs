@@ -2,47 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Activities;
-using System.Activities.Core.Presentation;
-using System.Activities.Presentation;
-using System.Activities.Presentation.Metadata;
 using System.Activities.Presentation.Toolbox;
-using System.Activities.Statements;
-using System.ServiceModel.Activities;
-using System.ComponentModel;
-using System.Activities.Presentation.Validation;
-using System.Diagnostics;
-using Microsoft.CSharp.Activities;
 using System.Reflection;
-using System.Collections.ObjectModel;
-using Microsoft.Windows.Controls.Ribbon;
 using System.IO;
 using System.Activities.XamlIntegration;
-using System.Activities.Tracking;
 using Microsoft.Win32;
 using MeetupWfIntro.Helpers;
-using MeetupWfIntro.MeetupActivityLibrary.Misc;
+using System.Windows.Controls.Ribbon;
 
 namespace MeetupWfIntro.Views
 {
 
-    public partial class MainWindow : RibbonWindow
+    public partial class MainWindow
     {
         private WorkflowApplication _wfApp;
         private ToolboxControl _wfToolbox;
         private CustomTrackingParticipant _executionLog;
 
-        private string _currentWorkflowFile = String.Empty;
+        private string _currentWorkflowFile = string.Empty;
 
 
         public MainWindow()

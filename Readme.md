@@ -1,8 +1,8 @@
-#.NET Flowchart Workflow Designer#
+#.NET Rehosted Workflow Designer#
 
-This project was built to showcase how easy it is to Re-host the .NET Windows Workflow Foundation WorkflowDesigner. 
+This project was built to showcase how easy it is to Rehost the .NET Windows Workflow Foundation Designer 
 
-![Alt text](https://github.com/orosandrei/Flowchart-Workflow-Designer/raw/master/flowchart-workflow-designer.png?raw=true?raw=true ".NET Flowchart Workflow Designer")
+![Alt text](https://github.com/orosandrei/Rehosted-Workflow-Designer/raw/master/rehosted-workflow-designer.png?raw=true ".NET Rehosted Workflow Designer")
 
 The solution contains:
 
@@ -33,9 +33,4 @@ The solution contains:
 ***
 
 * Twitter: http://twitter.com/orosandrei
-* E-mail: hello@andreioros.com
 * Project Showcased at Timisoara .NET Meetup 2 http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/
-
-***
-
-Enjoy!
