@@ -7,12 +7,12 @@ This project was built to showcase how easy it is to Rehost the .NET Windows Wor
 The solution contains:
 
 ##WPF Desktop Application##
-* Workflow Designer - Rehosting in a WPF Aplication
+* Workflow Designer - Rehosting in a WPF Aplication 
 * ToolboxControl - Loading Workflow Activities from Assemblies
 * Workflow Execution - retrieve Execution Log (TrackData) and Execution Output(s)
 * Workflow Management - New / Open / Save / Run
 
-##Activity Library - Custom Activities##
+##Activity Library - Custom Activities## 
 * ShowMessageBox - displays in a MessageBox the Value of the InputData argument
 * GetGroupMembers - retrieves the Member Names and Count for a specified Meetup.Com Group
 * GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event
