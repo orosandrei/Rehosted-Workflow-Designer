@@ -22,13 +22,13 @@ The solution contains:
 
 ***
 
-## A few links..##
-* Introduction to Windows Workflow Foundation  http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3 
+##Links##
 * Windows Workflow Foundation ( WWF ) http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx 
 * Windows Presentation Foundation ( WPF ) http://msdn.microsoft.com/en-us/library/ms754130(v=vs.110).aspx 
 * Meetup.Com REST API http://www.meetup.com/meetup_api/ 
 
 ***
-
-* Twitter: http://twitter.com/orosandrei
+* (Presentation) Introduction to Windows Workflow Foundation http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3 
+* Blog post about this demo &amp; Windows Workflow Foundation http://andreioros.com/blog/windows-workflow-foundation-rehosted-designer/
 * Project Showcased at Timisoara .NET Meetup 2 http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/
+* Twitter: @orosandrei http://twitter.com/orosandrei
