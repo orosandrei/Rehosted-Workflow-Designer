@@ -52,7 +52,7 @@
                     <OutArgument x:TypeArguments="t:TwilioRestClient">[twilio]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="t:TwilioRestClient">[new TwilioRestClient("ACfc7fabf7b7016ad31e3d652d0c13381f", "a02328e9883c3d456206f1dbde6bd534")]</InArgument>
+                    <InArgument x:TypeArguments="t:TwilioRestClient">[new TwilioRestClient("BAeb3ecae5a4016ad31e3d652d0c25242e", "b02125f3162a2c456206f1dbde6bd412")]</InArgument>
                   </Assign.Value>
                 </Assign>
               </TryCatch.Try>
