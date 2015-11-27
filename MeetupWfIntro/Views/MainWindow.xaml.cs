@@ -11,23 +11,29 @@ using System.IO;
 using System.Activities.XamlIntegration;
 using Microsoft.Win32;
 using MeetupWfIntro.Helpers;
-using System.Windows.Controls.Ribbon;
+using System.ComponentModel;
+using System.Timers;
+using Twilio;
 
 namespace MeetupWfIntro.Views
 {
 
-    public partial class MainWindow
+    public partial class MainWindow : INotifyPropertyChanged
     {
         private WorkflowApplication _wfApp;
         private ToolboxControl _wfToolbox;
         private CustomTrackingParticipant _executionLog;
 
         private string _currentWorkflowFile = string.Empty;
+        private Timer _timer;
 
 
         public MainWindow()
         {
             InitializeComponent();
+            _timer = new Timer(1000);
+            _timer.Enabled = false;
+            _timer.Elapsed += TrackingDataRefresh;
 
             //load all available workflow activities from loaded assemblies 
             InitializeActivitiesToolbox();
@@ -36,6 +42,49 @@ namespace MeetupWfIntro.Views
             WfDesignerBorder.Child = CustomWfDesigner.Instance.View;
             WfPropertyBorder.Child = CustomWfDesigner.Instance.PropertyInspectorView;
 
+        }
+
+
+        public string ExecutionLog
+        {
+            get
+            {
+                if (_executionLog != null)
+                    return _executionLog.TrackData;
+                else
+                    return string.Empty;
+            }
+            set { _executionLog.TrackData = value; NotifyPropertyChanged("ExecutionLog"); }
+        }
+
+
+        private void TrackingDataRefresh(Object source, ElapsedEventArgs e)
+        {
+            NotifyPropertyChanged("ExecutionLog");
+        }
+
+
+        private void consoleExecutionLog_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            consoleExecutionLog.ScrollToEnd();
+        }
+
+
+        /// <summary>
+        /// show execution log in ui
+        /// </summary>
+        private void UpdateTrackingData()
+        {
+            //retrieve & display execution log
+            //consoleExecutionLog.Dispatcher.Invoke(
+            //    System.Windows.Threading.DispatcherPriority.Normal,
+            //    new Action(
+            //        delegate ()
+            //        {
+            //            //consoleExecutionLog.Text = _executionLog.TrackData;
+            NotifyPropertyChanged("ExecutionLog");
+            //        }
+            //));
         }
 
 
@@ -50,6 +99,20 @@ namespace MeetupWfIntro.Views
 
                 // load Custom Activity Libraries into current domain
                 AppDomain.CurrentDomain.Load("MeetupActivityLibrary");
+                AppDomain.CurrentDomain.Load("Twilio.Api");
+                AppDomain.CurrentDomain.Load("System.Activities");
+                AppDomain.CurrentDomain.Load("System.ServiceModel.Activities");
+                AppDomain.CurrentDomain.Load("System.Activities.Core.Presentation");
+                AppDomain.CurrentDomain.Load("Microsoft.Workflow.Management");
+                AppDomain.CurrentDomain.Load("Microsoft.Activities.Extensions");
+                AppDomain.CurrentDomain.Load("Microsoft.Activities");
+                AppDomain.CurrentDomain.Load("Microsoft.Activities.Hosting");
+                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Utility.Activities");
+                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Security.Activities");
+                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Management.Activities");
+                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Diagnostics.Activities");
+                AppDomain.CurrentDomain.Load("Microsoft.Powershell.Core.Activities");
+                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Activities");
 
                 // get all loaded assemblies
                 IEnumerable<Assembly> appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
@@ -85,19 +148,32 @@ namespace MeetupWfIntro.Views
                                         && !activityType.IsNested
                                         && !activityType.IsAbstract
                                         && (activityType.GetConstructor(Type.EmptyTypes) != null)
-                                        && !activityType.Name.Contains('`')
+                                        //&& !activityType.Name.Contains('`')
                                     orderby
                                         activityType.Name
                                     select
                                         new ToolboxItemWrapper(activityType);
 
-                    actvities.ToList().ForEach(wfToolboxCategory.Add);
+                    actvities.ToList().ForEach(wfToolboxCategory.Add);                    
+
                     if (wfToolboxCategory.Tools.Count > 0)
                     {
                         _wfToolbox.Categories.Add(wfToolboxCategory);
                         activitiesCount += wfToolboxCategory.Tools.Count;
                     }
                 }
+                //fixed ForEach
+                _wfToolbox.Categories.Add(
+                       new System.Activities.Presentation.Toolbox.ToolboxCategory
+                       {
+                           CategoryName = "CustomForEach",
+                           Tools = {
+                                new ToolboxItemWrapper(typeof(System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory<>)),
+                                new ToolboxItemWrapper(typeof(System.Activities.Core.Presentation.Factories.ParallelForEachWithBodyFactory<>))
+                           }
+                       }
+                );
+
                 LabelStatusBar.Content = String.Format("Loaded Activities: {0}", activitiesCount.ToString());
                 WfToolboxBorder.Child = _wfToolbox;
             }
@@ -116,14 +192,8 @@ namespace MeetupWfIntro.Views
             try
             {
                 //retrieve & display execution log
-                consoleExecutionLog.Dispatcher.Invoke(
-                    System.Windows.Threading.DispatcherPriority.Normal,
-                    new Action(
-                        delegate()
-                        {
-                            consoleExecutionLog.Text = _executionLog.TrackData;
-                        }
-                ));
+                _timer.Stop();
+                UpdateTrackingData();
 
                 //retrieve & display execution output
                 foreach (var item in ev.Outputs)
@@ -146,14 +216,13 @@ namespace MeetupWfIntro.Views
         }
 
 
-
         #region Commands Handlers - Executed - New, Open, Save, Run
 
         /// <summary>
         /// Creates a new Workflow Application instance and executes the Current Workflow
         /// </summary>
         private void CmdWorkflowRun(object sender, ExecutedRoutedEventArgs e)
-        {           
+        {
             //get workflow source from designer
             CustomWfDesigner.Instance.Flush();
             MemoryStream workflowStream = new MemoryStream(ASCIIEncoding.Default.GetBytes(CustomWfDesigner.Instance.Text));
@@ -169,6 +238,24 @@ namespace MeetupWfIntro.Views
 
             //execute 
             _wfApp.Run();
+
+            //enable timer for real-time logging
+            _timer.Start();
+        }
+
+        /// <summary>
+        /// Stops the Current Workflow
+        /// </summary>
+        private void CmdWorkflowStop(object sender, ExecutedRoutedEventArgs e)
+        {
+            //manual stop
+            if (_wfApp != null)
+            {
+                _wfApp.Abort("Stopped by User");
+                _timer.Stop();
+                UpdateTrackingData();
+            }
+
         }
 
 
@@ -230,6 +317,19 @@ namespace MeetupWfIntro.Views
             }
         }
 
+        #endregion
+
+
+        #region INotify
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (null != handler)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
         #endregion
     }
 }

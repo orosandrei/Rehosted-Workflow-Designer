@@ -7,13 +7,27 @@ The solution contains:
 ##WPF Desktop Application##
 * Workflow Designer - Rehosting in a WPF Aplication 
 * ToolboxControl - Loading Workflow Activities from Assemblies
-* Workflow Execution - retrieve Execution Log (TrackData) and Execution Output(s)
-* Workflow Management - New / Open / Save / Run
+* Workflow Execution - retrieve real-time Execution Log (TrackData) and Execution Output(s)
+* Workflow Management - New / Open / Save / Run / Stop
 
 ##Activity Library - Custom Activities##
 * ShowMessageBox - displays in a MessageBox the Value of the InputData argument
 * GetGroupMembers - retrieves the Member Names and Count for a specified Meetup.Com Group
 * GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event
+
+##Demo Workflow - AzureVmPowerOperations.xaml##
+* InArguments - VM & Service names
+* OutArguments - ActionPerformed
+* the workflow connects to Azure & changes the VM power state: if Powered On it will be power off, else powered on
+
+##Demo Workflow - LocalWinServicesCSV.xaml##
+* InArguments - Status (default is "running")
+* the workflow retrieves the local windows services with the status defined by the inargument, writes the list to a file & opens it
+
+##Demo Workflow - SvcMonitoring.xaml##
+* InArguments - Service
+* OutArguments - Log
+* the state machine workflows monitors the state of the specified windows service; if the state changes, the user gets notified via SMS
 
 ##Demo Workflow - meetup.xaml##
 * InArguments - Meetup.COM REST API Key and RSVP (true / false)
@@ -24,11 +38,11 @@ The solution contains:
 
 ##Links##
 * [Windows Workflow Foundation](http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx)
-* [Windows Presentation Foundation](http://msdn.microsoft.com/en-us/library/ms754130(v=vs.110).aspx)
+* [What's new in WF 4.5](https://msdn.microsoft.com/en-us/library/hh305677.aspx)
 * [Meetup.Com REST API](http://www.meetup.com/meetup_api/)
 
 ***
-* (Presentation) [Introduction to Windows Workflow Foundation](http://www.slideshare.net/orosandrei/introduction-to-windows-workflow-foundation-4-3)
+* (My presentation at Microsoft Summit 2015) [Introduction to Windows Workflow Foundation](http://www.slideshare.net/orosandrei/windows-workflow-foundation-54773529)
 * [Blog post about the demo &amp; Windows Workflow Foundation](http://andreioros.com/blog/windows-workflow-foundation-rehosted-designer/)
-* Project Showcased at [Timisoara .NET Meetup 2](http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/)
+* Project Showcased at [Microsoft Summit 2015](http://andreioros.com/blog/workflow-foundation-microsoft-summit/#more-92) & [Timisoara .NET Meetup 2](http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/)
 * Twitter [@orosandrei](http://twitter.com/orosandrei)

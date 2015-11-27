@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace MeetupWfIntro.Helpers
 {
@@ -13,5 +8,6 @@ namespace MeetupWfIntro.Helpers
     public static class CustomCommands
     {
         public static ICommand CmdWfRun = new RoutedCommand("CmdWfRun", typeof(CustomCommands));
+        public static ICommand CmdWfStop = new RoutedCommand("CmdWfStop", typeof(CustomCommands));
     }
 }

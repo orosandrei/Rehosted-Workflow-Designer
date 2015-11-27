@@ -7,6 +7,7 @@
         <CommandBinding Command="ApplicationCommands.Open" Executed="CmdWorkflowOpen"/>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CmdWorkflowSave"/>
         <CommandBinding Command="mw:CustomCommands.CmdWfRun" Executed="CmdWorkflowRun" />
+        <CommandBinding Command="mw:CustomCommands.CmdWfStop" Executed="CmdWorkflowStop" />
     </Window.CommandBindings>  
     
     <Grid x:Name="wfGrid">
@@ -22,7 +23,7 @@
             <RowDefinition Height="21"/>
         </Grid.RowDefinitions>
         
-        <Ribbon x:Name="Ribbon" Title=".NET Meetup - Introduction to Windows Workflow Foundation" Grid.ColumnSpan="3">
+        <Ribbon x:Name="Ribbon" Title="Microsoft Summit - Introduction to Windows Workflow Foundation" Grid.ColumnSpan="3">
             <Ribbon.HelpPaneContent>
                 <RibbonButton/>
             </Ribbon.HelpPaneContent>
@@ -44,6 +45,7 @@
                 </RibbonGroup>
                 <RibbonGroup x:Name="GroupWorkflowRuntime" Header="Runtime">
                     <RibbonButton x:Name="ButtonWorkflowRun" Command="mw:CustomCommands.CmdWfRun" Label="Run" LargeImageSource="/Meetup WF Intro;component/Resources/Menu/run.png" />
+                    <RibbonButton x:Name="ButtonWorkflowStop" Command="mw:CustomCommands.CmdWfStop" Label="Stop" LargeImageSource="/Meetup WF Intro;component/Resources/Menu/stop.png" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
@@ -56,7 +58,7 @@
             <StatusBarItem x:Name="LabelStatusBar" Foreground="White" FontSize="12">
             </StatusBarItem>
         </StatusBar>
-        <TextBox x:Name="consoleExecutionLog" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="3,40,0,0" HorizontalAlignment="Left" Width="329"  />
+        <TextBox Text="{Binding ExecutionLog, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" x:Name="consoleExecutionLog" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="3,40,0,0" HorizontalAlignment="Left" Width="329" TextChanged="consoleExecutionLog_TextChanged"  />
         <TextBox x:Name="consoleOutput" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="348,40,3,0" />
         <Label Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="34" Content="Execution Log" Margin="3,15,0,0" FontWeight="Bold" />
         <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Height="34" Content="Output" Margin="348,15,0,0" FontWeight="Bold" />
