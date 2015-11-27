@@ -15,21 +15,22 @@ The solution contains:
 * GetGroupMembers - retrieves the Member Names and Count for a specified Meetup.Com Group
 * GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event
 
-##Demo Workflow - AzureVmPowerOperations.xaml##
+##Demo Workflows##
+###AzureVmPowerOperations.xaml###
 * InArguments - VM & Service names
 * OutArguments - ActionPerformed
 * the workflow connects to Azure & changes the VM power state: if Powered On it will be power off, else powered on
 
-##Demo Workflow - LocalWinServicesCSV.xaml##
+###LocalWinServicesCSV.xaml###
 * InArguments - Status (default is "running")
 * the workflow retrieves the local windows services with the status defined by the inargument, writes the list to a file & opens it
 
-##Demo Workflow - SvcMonitoring.xaml##
+###SvcMonitoring.xaml###
 * InArguments - Service
 * OutArguments - Log
 * the state machine workflows monitors the state of the specified windows service; if the state changes, the user gets notified via SMS
 
-##Demo Workflow - meetup.xaml##
+###Meetup.xaml###
 * InArguments - Meetup.COM REST API Key and RSVP (true / false)
 * If RSVP = false - the Workflow outputs a list with the Members of a Meetup.Com Group
 * If RSVP = true - the Workflow outputs a list with the Attending Members of a Meetup.Com Event
