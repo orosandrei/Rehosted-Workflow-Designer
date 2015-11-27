@@ -38,12 +38,12 @@ The solution contains:
 ***
 
 ##Links##
-* [Windows Workflow Foundation](http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx)
-* [What's new in WF 4.5](https://msdn.microsoft.com/en-us/library/hh305677.aspx)
-* [Meetup.Com REST API](http://www.meetup.com/meetup_api/)
-
-***
 * (My presentation at Microsoft Summit 2015) [Introduction to Windows Workflow Foundation](http://www.slideshare.net/orosandrei/windows-workflow-foundation-54773529)
 * [Blog post about the demo &amp; Windows Workflow Foundation](http://andreioros.com/blog/windows-workflow-foundation-rehosted-designer/)
 * Project Showcased at [Microsoft Summit 2015](http://andreioros.com/blog/workflow-foundation-microsoft-summit/#more-92) & [Timisoara .NET Meetup 2](http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/)
 * Twitter [@orosandrei](http://twitter.com/orosandrei)
+
+***
+
+* [Windows Workflow Foundation](http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx)
+* [What's new in WF 4.5](https://msdn.microsoft.com/en-us/library/hh305677.aspx)
