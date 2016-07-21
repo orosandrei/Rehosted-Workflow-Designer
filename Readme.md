@@ -47,3 +47,4 @@ The solution contains:
 
 * MSDN [Windows Workflow Foundation](http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx)
 * MSDN [What's new in WF 4.5](https://msdn.microsoft.com/en-us/library/hh305677.aspx)
+* [Roslyn C# Expression Editor](https://github.com/dmetzgar/wf-rehost-roslyn)
