@@ -14,6 +14,8 @@ using MeetupWfIntro.Helpers;
 using System.ComponentModel;
 using System.Timers;
 using Twilio;
+using System.Activities.Presentation;
+using System.Runtime.Versioning;
 
 namespace MeetupWfIntro.Views
 {
@@ -97,22 +99,24 @@ namespace MeetupWfIntro.Views
             {
                 _wfToolbox = new ToolboxControl();
 
+                //load dependency
+                AppDomain.CurrentDomain.Load("Twilio.Api");
                 // load Custom Activity Libraries into current domain
                 AppDomain.CurrentDomain.Load("MeetupActivityLibrary");
-                AppDomain.CurrentDomain.Load("Twilio.Api");
+                // load System Activity Libraries into current domain; uncomment more if libraries below available on your system
                 AppDomain.CurrentDomain.Load("System.Activities");
                 AppDomain.CurrentDomain.Load("System.ServiceModel.Activities");
                 AppDomain.CurrentDomain.Load("System.Activities.Core.Presentation");
-                AppDomain.CurrentDomain.Load("Microsoft.Workflow.Management");
-                AppDomain.CurrentDomain.Load("Microsoft.Activities.Extensions");
-                AppDomain.CurrentDomain.Load("Microsoft.Activities");
-                AppDomain.CurrentDomain.Load("Microsoft.Activities.Hosting");
-                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Utility.Activities");
-                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Security.Activities");
-                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Management.Activities");
-                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Diagnostics.Activities");
-                AppDomain.CurrentDomain.Load("Microsoft.Powershell.Core.Activities");
-                AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Activities");
+                //AppDomain.CurrentDomain.Load("Microsoft.Workflow.Management");
+                //AppDomain.CurrentDomain.Load("Microsoft.Activities.Extensions");
+                //AppDomain.CurrentDomain.Load("Microsoft.Activities");
+                //AppDomain.CurrentDomain.Load("Microsoft.Activities.Hosting");
+                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Utility.Activities");
+                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Security.Activities");
+                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Management.Activities");
+                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Diagnostics.Activities");
+                //AppDomain.CurrentDomain.Load("Microsoft.Powershell.Core.Activities");
+                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Activities");
 
                 // get all loaded assemblies
                 IEnumerable<Assembly> appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
@@ -290,6 +294,18 @@ namespace MeetupWfIntro.Views
         {
             _currentWorkflowFile = String.Empty;
             CustomWfDesigner.NewInstance();
+            WfDesignerBorder.Child = CustomWfDesigner.Instance.View;
+            WfPropertyBorder.Child = CustomWfDesigner.Instance.PropertyInspectorView;
+        }
+
+
+        /// <summary>
+        /// Creates a new Workflow Designer instance and loads the Default Workflow with C# Expression Editor
+        /// </summary>
+        private void CmdWorkflowNewCSharp(object sender, ExecutedRoutedEventArgs e)
+        {
+            _currentWorkflowFile = String.Empty;
+            CustomWfDesigner.NewInstanceCSharp();
             WfDesignerBorder.Child = CustomWfDesigner.Instance.View;
             WfPropertyBorder.Child = CustomWfDesigner.Instance.PropertyInspectorView;
         }

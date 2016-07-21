@@ -15,6 +15,7 @@ namespace MeetupWfIntro.Helpers
     {
         private static WorkflowDesigner _wfDesigner;
         private const String _defaultWorkflow = "defaultWorkflow.xaml";
+        private const String _defaultWorkflowCSharp = "defaultWorkflowCSharp.xaml";
 
         /// <summary>
         /// Gets the current WorkflowDesigner Instance
@@ -44,6 +45,15 @@ namespace MeetupWfIntro.Helpers
 
             //load Workflow Xaml
             _wfDesigner.Load(sourceFile);
+        }
+
+        /// <summary>
+        /// Creates a new Workflow Designer instance with C# Expression Editor
+        /// </summary>
+        /// <param name="sourceFile">Workflow FileName</param>
+        public static void NewInstanceCSharp(string sourceFile = _defaultWorkflowCSharp)
+        {
+            NewInstance(sourceFile);
         }
     }
 }
