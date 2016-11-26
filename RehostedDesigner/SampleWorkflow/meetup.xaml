@@ -1,0 +1,295 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="RehostedWorkflowDesigner.Workflow" this:Workflow.RSVP="True" this:Workflow.ApiKey="232e27495e2c543936d6e637f2f5f72"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mmm="clr-namespace:RehostedWorkflowDesigner.MeetupActivityLibrary.MeetupAPI;assembly=MeetupActivityLibrary"
+ xmlns:mmm1="clr-namespace:RehostedWorkflowDesigner.MeetupActivityLibrary.Misc;assembly=MeetupActivityLibrary"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:this="clr-namespace:RehostedWorkflowDesigner"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="outNames" Type="OutArgument(x:String)" />
+    <x:Property Name="outCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="RSVP" Type="InArgument(x:Boolean)" />
+    <x:Property Name="ApiKey" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>RehostedWorkflowDesigner.Workflow_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Collections.Generic</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Default="[String.Empty]" Name="names" />
+      <Variable x:TypeArguments="x:Int32" Name="membersCount" />
+      <Variable x:TypeArguments="sco:Collection(x:String)" Name="membersNames" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowDecision x:Name="__ReferenceID7" Condition="[RSVP = true]" DisplayName="Decision RSVP" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+        <FlowDecision.True>
+          <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+            <mmm:GetRSVPmembers RawResponse="{x:Null}" ApiKey="[ApiKey]" EventID="186254642" sap2010:WorkflowViewState.IdRef="GetRSVPmembers_1" MembersCount="[membersCount]" MembersNames="[membersNames]" />
+            <FlowStep.Next>
+              <FlowDecision x:Name="__ReferenceID0" Condition="[membersCount &gt; 0]" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                <FlowDecision.True>
+                  <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                    <While sap2010:WorkflowViewState.IdRef="While_1">
+                      <While.Variables>
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="iterator" />
+                      </While.Variables>
+                      <While.Condition>[iterator &lt; membersCount]</While.Condition>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[names]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[names + membersNames(iterator) + "; "]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[iterator]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[iterator + 1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </While>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                        <mmm1:ShowMessageBox DisplayName="ShowMessageBox" sap2010:WorkflowViewState.IdRef="ShowMessageBox_1" InputData="[names]" />
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[outNames]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[names]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <FlowStep.Next>
+                              <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[outCount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[membersCount]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </FlowStep>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowDecision.True>
+                <FlowDecision.False>
+                  <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                    <mmm1:ShowMessageBox DisplayName="ShowMessageBox" sap2010:WorkflowViewState.IdRef="ShowMessageBox_2" InputData="[&quot;no group members&quot;]" />
+                  </FlowStep>
+                </FlowDecision.False>
+              </FlowDecision>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowDecision.True>
+        <FlowDecision.False>
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+            <mmm:GetGroupMembers RawResponse="{x:Null}" ApiKey="[ApiKey]" GroupUrlName="Timisoara-NET-Meetup" sap2010:WorkflowViewState.IdRef="GetGroupMembers_1" MembersCount="[membersCount]" MembersNames="[membersNames]" />
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID0</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowDecision.False>
+      </FlowDecision>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <sads:DebugSymbol.Symbol>d1REOlxEaWdpU3RvcmFnZVxKb2JzXE1lZXR1cCBkb3QgTkVUXE1lZXR1cFdmSW50cm9cTWVldHVwV2ZJbnRyb1xiaW5cRGVidWdcbWVldHVwLnhhbWwkAV8BZAEDAXsBmwEBAiYDiQEPAgEBKDQoRAIBAi03LUYCATZ3DXfhAQIBLjI/MlYCASxuFW6nAQIBKjUVTB0CARhPGU+UAQIBFVIdWSYCARBcIWMqAgELMA0wzwECAQN3QHdKAgE0d1h3bgIBM3ewAXfAAQIBMXfOAXfeAQIBL26EAW6kAQIBKzdFN0gCARk6F0siAgEdOSg5RAIBGk+IAU+RAQIBFldIV08CARNUSVRTAgERYUthWQIBDl5MXlYCAQwwUjBdAgEKMD8wSQIBCDCeATCuAQIBBjC8ATDMAQIBBDsZQiICASNDGUoiAgEeQERAawIBJj1FPUwCASRIQ0hRAgEhRURFTgIBHw==</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="GetRSVPmembers_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="264,284">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ShowMessageBox_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">29,450</av:Point>
+            <av:Size x:Key="ShapeSize">242,60</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">29,360</av:Point>
+            <av:Size x:Key="ShapeSize">242,60</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">150,420 150,450</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">50,319</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">150,341 150,360</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">60,224.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">160,275.5 160,305.5 150,305.5 150,319</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ShowMessageBox_2" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">400,299</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_1" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">375,156.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="FalseConnector">445,200 500,200 500,299</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">375,200 160,200 160,224.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">20,149</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">220,160 250,160 250,126.5 392.5,126.5 392.5,156.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetGroupMembers_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">410,79</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">510,101 510,131 410,131 410,156.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_2" sap:VirtualizedContainerService.HintSize="79,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">190.5,26.5</av:Point>
+            <av:Size x:Key="ShapeSize">79,87</av:Size>
+            <av:PointCollection x:Key="FalseConnector">269.5,70 299.5,70 299.5,90 410,90</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">190.5,70 120,70 120,149</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="624,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">30,12.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">90,50 120,50 120,0 210.25,0 210.25,26.5</av:PointCollection>
+            <x:Double x:Key="Width">610</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RehostedWorkflowDesigner.Workflow_1" sap:VirtualizedContainerService.HintSize="664,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

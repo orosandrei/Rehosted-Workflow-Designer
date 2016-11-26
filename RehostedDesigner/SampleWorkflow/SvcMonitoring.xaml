@@ -1,0 +1,302 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="RehostedWorkflowDesigner.Workflow" this:Workflow.Service="Bonjour Service"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mmm="clr-namespace:RehostedWorkflowDesigner.MeetupActivityLibrary.Misc;assembly=MeetupActivityLibrary"
+ xmlns:mpa="clr-namespace:Microsoft.PowerShell.Activities;assembly=Microsoft.PowerShell.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation"
+ xmlns:t="clr-namespace:Twilio;assembly=Twilio.Api"
+ xmlns:this="clr-namespace:RehostedWorkflowDesigner"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Service" Type="InArgument(x:String)" />
+    <x:Property Name="Log" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>RehostedWorkflowDesigner.Workflow_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>Twilio</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Twilio.Api</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <StateMachine sap2010:WorkflowViewState.IdRef="StateMachine_1">
+    <StateMachine.InitialState>
+      <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Initialization State" DisplayName="Initialize" sap2010:WorkflowViewState.IdRef="State_3">
+        <State.Entry>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <TryCatch DisplayName="init twilio sms client" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch.Try>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_12">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="t:TwilioRestClient">[twilio]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="t:TwilioRestClient">[new TwilioRestClient("BAeb3ecae5a4016ad31e3d652d0c25242e", "b02125f3162a2c456206f1dbde6bd412")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <mmm:ShowMessageBox DisplayName="Message" sap2010:WorkflowViewState.IdRef="ShowMessageBox_4" InputData="[exception]" />
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+            <mpa:InlineScript Command="$svc = Get-Service | Where-Object {$_.name -eq &quot;$using:Service&quot;}; $svc.status" sap2010:WorkflowViewState.IdRef="InlineScript_5" Result="[status]" />
+            <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[initialSvcState]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[status(0).ToString()]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </State.Entry>
+        <State.Exit>
+          <mmm:ShowMessageBox DisplayName="Message" sap2010:WorkflowViewState.IdRef="ShowMessageBox_1" InputData="[&quot;leaving Init&quot;]" />
+        </State.Exit>
+        <State.Transitions>
+          <Transition DisplayName="init running" sap2010:WorkflowViewState.IdRef="Transition_3" Condition="[initialSvcState = &quot;Running&quot;]">
+            <Transition.To>
+              <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="The monitored Windows Service is running, Workflow remains in this monitoring State" DisplayName="Win Svc Running" sap2010:WorkflowViewState.IdRef="State_2">
+                <State.Exit>
+                  <mmm:ShowMessageBox DisplayName="Message" sap2010:WorkflowViewState.IdRef="ShowMessageBox_2" InputData="[&quot;leaving state - Running&quot;]" />
+                </State.Exit>
+                <State.Transitions>
+                  <Transition DisplayName="Transition Stopped Running" sap2010:WorkflowViewState.IdRef="Transition_2">
+                    <Transition.Trigger>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+                        <mpa:InlineScript Command="$svc = Get-Service | Where-Object {$_.name -eq &quot;$using:Service&quot;}; $svc.status" sap2010:WorkflowViewState.IdRef="InlineScript_6" Result="[status]" />
+                        <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                      </Sequence>
+                    </Transition.Trigger>
+                    <Transition.To>
+                      <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="The monitored Windows Service is not running, the Workflow will be in this State, waiting for the Svc to be available again" DisplayName="Win Svc Not Running" sap2010:WorkflowViewState.IdRef="State_1">
+                        <State.Exit>
+                          <mmm:ShowMessageBox DisplayName="Message" sap2010:WorkflowViewState.IdRef="ShowMessageBox_3" InputData="[&quot;leaving state - Not Running&quot;]" />
+                        </State.Exit>
+                        <State.Transitions>
+                          <Transition DisplayName="Transition Running Again" sap2010:WorkflowViewState.IdRef="Transition_1">
+                            <Transition.Trigger>
+                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                <mpa:InlineScript Command="$svc = Get-Service | Where-Object {$_.name -eq &quot;$using:Service&quot;}; $svc.status" sap2010:WorkflowViewState.IdRef="InlineScript_7" Result="[status]" />
+                                <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                              </Sequence>
+                            </Transition.Trigger>
+                            <Transition.To>
+                              <x:Reference>__ReferenceID0</x:Reference>
+                            </Transition.To>
+                            <Transition.Action>
+                              <Assign DisplayName="SMS notification" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="t:Message">[SmsResponse]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="t:Message">[twilio.SendMessage("+15622856386", "+40737567111", "Service running again")]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Transition.Action>
+                            <Transition.Condition>[status(0).ToString() = "Running"]</Transition.Condition>
+                          </Transition>
+                        </State.Transitions>
+                      </State>
+                    </Transition.To>
+                    <Transition.Action>
+                      <Assign DisplayName="SMS notification" sap2010:WorkflowViewState.IdRef="Assign_14">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="t:Message">[SmsResponse]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="t:Message">[twilio.SendMessage("+15622856386", "+40737567111", "Service stopped")]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Transition.Action>
+                    <Transition.Condition>[status(0).ToString() &lt;&gt; "Running"]</Transition.Condition>
+                  </Transition>
+                </State.Transitions>
+              </State>
+            </Transition.To>
+          </Transition>
+          <Transition DisplayName="init not running" sap2010:WorkflowViewState.IdRef="Transition_4" To="{x:Reference __ReferenceID1}" Condition="[initialSvcState &lt;&gt; &quot;Running&quot;]" />
+        </State.Transitions>
+        <State.Variables>
+          <Variable x:TypeArguments="x:String" Name="initialSvcState" />
+        </State.Variables>
+      </State>
+    </StateMachine.InitialState>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <StateMachine.Variables>
+      <Variable x:TypeArguments="sma:PSDataCollection(sma:PSObject)" Name="status" />
+      <Variable x:TypeArguments="t:Message" Name="SmsResponse" />
+      <Variable x:TypeArguments="t:TwilioRestClient" Name="twilio" />
+    </StateMachine.Variables>
+    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xBbmRyZWlcRGVza3RvcFxNUyBTdW1taXRcZGVtbyBiaW5cU3ZjTW9uaXRvcmluZy54YW1sLQFiAXIBAisDowESAgEBWA+QARcCAS1lF4EBHwIBHS0HmAEPAgECWhNapAECATtfF2IiAgE1jQErjQFUAgE0hAEXiwEgAgEvZxtnsAECAStsH28qAgElfjN+VQIBJHUffCgCAR8vC1AWAgELUwtTkQECAQlWa1aUAQIBBpMBkQGTAcEBAgEEWnpaoQECATxgGWDSAQIBOGEZYWACATaJAUOJAYoBAgEyhgFEhgFRAgEwZ4IBZ60BAgEsbSFt2gECAShuIW5oAgEmekt6mAECASJ3THdZAgEgMA1FGAIBFUYNRsYBAgESRw1HVAIBEEgNTxYCAQxTclOOAQIBCmDFAWDPAQIBOWEpYTMCATdtzQFt1wECASluMW47AgEnMhE5GgIBGUEVQYwBAgEWRrkBRsMBAgETRx1HJwIBEU04TU4CAQ9KOUpKAgENN0Y3pgECARw0RzRPAgEaQXxBiQECARc=</sads:DebugSymbol.Symbol>
+  </StateMachine>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="ShowMessageBox_4" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="404,21">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="508,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InlineScript_5" sap:VirtualizedContainerService.HintSize="508,139" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="508,22" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="508,60" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="530,516">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ShowMessageBox_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ShowMessageBox_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="InlineScript_6" sap:VirtualizedContainerService.HintSize="508,139" />
+      <sap2010:ViewStateData Id="Delay_2" sap:VirtualizedContainerService.HintSize="508,22" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="530,325">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ShowMessageBox_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="InlineScript_7" sap:VirtualizedContainerService.HintSize="508,139" />
+      <sap2010:ViewStateData Id="Delay_3" sap:VirtualizedContainerService.HintSize="508,22" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="530,325">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Transition_1" sap:VirtualizedContainerService.HintSize="572,770">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">394,218.8 364,218.8 364,211.3 188.5,211.3</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">5</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">12</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="192,153">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">394,203.5</av:Point>
+            <av:Size x:Key="ShapeSize">192,153</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Double x:Key="StateContainerWidth">178</x:Double>
+            <x:Double x:Key="StateContainerHeight">34.079999999999984</x:Double>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Transition_2" sap:VirtualizedContainerService.HintSize="572,770">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">188.5,275.8 218.5,275.8 218.5,280 394,280</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">52</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">37</x:Int32>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_2" sap:VirtualizedContainerService.HintSize="177,129">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">11.5,185.5</av:Point>
+            <av:Size x:Key="ShapeSize">177,129</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Double x:Key="StateContainerWidth">163</x:Double>
+            <x:Double x:Key="StateContainerHeight">25</x:Double>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_3" sap:VirtualizedContainerService.HintSize="430,505">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">223,104.95 100,104.95 100,185.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">41</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_4" sap:VirtualizedContainerService.HintSize="430,505">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">337,104.95 490,104.95 490,203.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">40</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="114,99">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">223,50.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,99</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="StateMachine_1" sap:VirtualizedContainerService.HintSize="671,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">10,2.5</av:Point>
+            <x:Double x:Key="StateContainerWidth">657</x:Double>
+            <x:Double x:Key="StateContainerHeight">600</x:Double>
+            <av:PointCollection x:Key="ConnectorLocation">70,51.25 100,51.25 100,20.5 274.3,20.5 274.3,50.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RehostedWorkflowDesigner.Workflow_1" sap:VirtualizedContainerService.HintSize="711,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,175 @@
+﻿<sape:TextualExpressionEditor x:Class="RehostedWorkflowDesigner.CSharpExpressionEditor.RoslynExpressionEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sape="clr-namespace:System.Activities.Presentation.Expressions;assembly=System.Activities.Presentation"             
+             xmlns:local="clr-namespace:RehostedWorkflowDesigner.CSharpExpressionEditor"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <sape:TextualExpressionEditor.Resources>
+        <local:LineToHeightConverter x:Uid="res:LineToHeightConverter_1" x:Key="lineToHeightConverter" />
+        <SolidColorBrush x:Uid="SolidColorBrush_1" x:Key="WorkflowViewElementBorderBrush" Color="#FFD0D7E2"/>
+
+        <DrawingBrush x:Uid="DrawingBrush_65" x:Key="TextBoxErrorIcon" Stretch="Uniform">
+            <!-- Viewbox="0,0,10,10" ViewboxUnits="Absolute" -->
+            <DrawingBrush.Drawing>
+                <DrawingGroup x:Uid="DrawingGroup_71">
+                    <DrawingGroup.Children>
+                        <GeometryDrawing x:Uid="GeometryDrawing_514" Brush="#FFDADADA" Geometry="F1 M 8.00133,0L -3.62149e-007,8.00133L -3.62149e-007,13.3333L 8,21.3333L 13.3347,21.3333L 21.3333,13.3347L 21.3333,8L 13.3333,0L 8.00133,0 Z "/>
+                        <GeometryDrawing x:Uid="GeometryDrawing_515" Brush="#FF1AA1E2" Geometry="F1 M 11.9997,13.3336L 9.33307,13.3336L 9.33307,4.00027L 11.9997,4.00027M 11.9997,17.3336L 9.33307,17.3336L 9.33307,14.6669L 11.9997,14.6669M 12.7811,1.3336L 8.55307,1.3336L 1.33307,8.5536L 1.33307,12.7816L 8.55173,20.0003L 12.7824,20.0003L 19.9997,12.7829L 19.9997,8.55227L 12.7811,1.3336 Z "/>
+                        <GeometryDrawing x:Uid="GeometryDrawing_516" Brush="#FFFFFFFF" Geometry="F1 M 9.33307,17.3336L 11.9997,17.3336L 11.9997,14.6669L 9.33307,14.6669M 9.33307,4.00027L 11.9997,4.00027L 11.9997,13.3336L 9.33307,13.3336L 9.33307,4.00027 Z "/>
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+        <DrawingBrush x:Uid="DrawingBrush_5" x:Key="ResizeGripIcon" Stretch="Uniform">
+            <DrawingBrush.Drawing>
+                <DrawingGroup x:Uid="DrawingGroup_47">
+                    <DrawingGroup.Children>
+                        <GeometryDrawing x:Uid="GeometryDrawing_408" Brush="#FFDADADA" Geometry="F1 M 13.3333,0L 13.3333,6.66667L 6.668,6.66667L 6.668,13.3333L 3.97364e-007,13.3333L 3.97364e-007,20L 20,20L 20,0L 13.3333,0 Z " />
+                        <GeometryDrawing x:Uid="GeometryDrawing_409" Brush="#FF414141" Geometry="F1 M 14.6669,18.6671L 18.6669,18.6671L 18.6669,14.6671L 14.6669,14.6671L 14.6669,18.6671 Z " />
+                        <GeometryDrawing x:Uid="GeometryDrawing_410" Brush="#FF414141" Geometry="F1 M 14.6669,12.0004L 18.6669,12.0004L 18.6669,8.0004L 14.6669,8.0004L 14.6669,12.0004 Z " />
+                        <GeometryDrawing x:Uid="GeometryDrawing_411" Brush="#FF414141" Geometry="F1 M 8.00027,18.6671L 12.0003,18.6671L 12.0003,14.6671L 8.00027,14.6671L 8.00027,18.6671 Z " />
+                        <GeometryDrawing x:Uid="GeometryDrawing_412" Brush="#FF414141" Geometry="F1 M 1.3336,18.6671L 5.3336,18.6671L 5.3336,14.6671L 1.3336,14.6671L 1.3336,18.6671 Z " />
+                        <GeometryDrawing x:Uid="GeometryDrawing_413" Brush="#FF414141" Geometry="F1 M 8.00027,12.0004L 12.0003,12.0004L 12.0003,8.0004L 8.00027,8.0004L 8.00027,12.0004 Z " />
+                        <GeometryDrawing x:Uid="GeometryDrawing_414" Brush="#FF414141" Geometry="F1 M 14.6669,5.33373L 18.6669,5.33373L 18.6669,1.33373L 14.6669,1.33373L 14.6669,5.33373 Z " />
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="textBlockStyle">
+            <Setter x:Uid="Setter_3" Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}"/>
+            <Setter x:Uid="Setter_1" Property="MinHeight">
+                <Setter.Value>
+                    <MultiBinding x:Uid="MultiBinding_1" Converter="{StaticResource lineToHeightConverter}"
+                          ConverterParameter="MinHeight">
+                        <Binding x:Uid="Binding_1" Path="MinHeight" RelativeSource="{RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}" />
+                        <Binding x:Uid="Binding_2" Path="FontFamily" RelativeSource="{RelativeSource Self}" />
+                        <Binding x:Uid="Binding_3" Path="FontSize" RelativeSource="{RelativeSource Self}" />
+                        <Binding x:Uid="Binding_4" Path="MinLines" RelativeSource="{RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Setter x:Uid="Setter_2" Property="MaxHeight">
+                <Setter.Value>
+                    <MultiBinding x:Uid="MultiBinding_2" Converter="{StaticResource lineToHeightConverter}"
+                          ConverterParameter="MaxHeight">
+                        <Binding x:Uid="Binding_5" Path="MaxHeight" RelativeSource="{RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}" />
+                        <Binding x:Uid="Binding_6" Path="FontFamily" RelativeSource="{RelativeSource Self}" />
+                        <Binding x:Uid="Binding_7" Path="FontSize" RelativeSource="{RelativeSource Self}" />
+                        <Binding x:Uid="Binding_8" Path="MaxLines" RelativeSource="{RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <DataTrigger  x:Uid="DataTrigger_10" Binding="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}" Value="{x:Null}">
+                    <Setter x:Uid="Setter_79" Property="FontStyle" Value="Italic"/>
+                    <Setter x:Uid="Setter_80" Property="Foreground" Value="{DynamicResource ResourceKey={x:Static SystemColors.GrayTextBrushKey}}"/>
+                    <Setter x:Uid="Setter_81" Property="Text" Value="{Binding Path=HintText, RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}"/>
+                </DataTrigger>
+                <DataTrigger x:Uid="DataTrigger_2" Binding="{Binding Path=Text.Length, RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}" Value="0">
+                    <Setter x:Uid="Setter_83" Property="FontStyle" Value="Italic"/>
+                    <Setter x:Uid="Setter_84" Property="Foreground" Value="{DynamicResource ResourceKey={x:Static SystemColors.GrayTextBrushKey}}"/>
+                    <Setter x:Uid="Setter_85" Property="Text" Value="{Binding Path=HintText, RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}"/>
+                </DataTrigger>
+                <DataTrigger x:Uid="DataTrigger_11" Binding="{Binding Path=IsSupportedExpression, RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}" Value="False">
+                    <Setter x:Uid="Setter_86" Property="FontStyle" Value="Italic"/>
+                    <Setter x:Uid="Setter_87" Property="Foreground" Value="{DynamicResource ResourceKey={x:Static SystemColors.GrayTextBrushKey}}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Uid="Style_4" x:Key="errorStyle" TargetType="{x:Type Rectangle}">
+            <Setter x:Uid="Setter_47" Property="Visibility" Value="Collapsed"/>
+            <Setter x:Uid="Setter_52" Property="Fill" Value="{x:Null}"/>
+            <Setter x:Uid="Setter_49" Property="HorizontalAlignment" Value="Right"/>
+            <Setter x:Uid="Setter_86" Property="VerticalAlignment" Value="Top"/>
+            <Setter x:Uid="Setter_87" Property="ToolTipService.ShowOnDisabled" Value="True"/>
+            <Style.Triggers>
+                <DataTrigger x:Uid="DataTrigger_9" Binding="{Binding Path=HasValidationError}" Value="True">
+                    <Setter x:Uid="Setter_50" Property="Visibility" Value="Visible"/>
+                    <Setter x:Uid="Setter_51" Property="ToolTip" Value="{Binding Path=ValidationError}" />
+
+                    <Setter x:Uid="Setter_52" Property="Fill" Value="{StaticResource TextBoxErrorIcon}"/>
+                    <Setter x:Uid="Setter_53" Property="Width" Value="12"/>
+                    <Setter x:Uid="Setter_54" Property="Height" Value="12"/>
+                    <Setter x:Uid="Setter_55" Property="Margin" Value="2,2,2,0"/>
+                    <Setter x:Uid="Setter_88" Property="ToolTipService.InitialShowDelay" Value="100"/>
+                    <Setter x:Uid="Setter_89" Property="ToolTipService.ShowDuration" Value="3600000"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Uid="Style_6" x:Key="borderStyle" TargetType="{x:Type Border}">
+            <Style.Triggers>
+                <DataTrigger x:Uid="DataTrigger_12" Binding="{Binding Path=IsEnabled}" Value="False">
+                    <Setter x:Uid="Setter_106" Property="Background" Value="{DynamicResource WorkflowViewElementBackground}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Uid="Style_5" x:Key="editorStyle" TargetType="{x:Type Control}">
+            <Setter x:Uid="Setter_90" Property="Margin" Value="4,2,4,2"/>
+            <Setter x:Uid="Setter_56" Property="ContextMenu" Value="{Binding Path=ContextMenu}"/>
+            <Setter x:Uid="Setter_57" Property="FlowDirection" Value="LeftToRight"/>
+            <Setter x:Uid="Setter_58" Property="FontFamily" Value="{Binding Path=FontFamily}"/>
+            <Setter x:Uid="Setter_59" Property="FontSize" Value="{Binding Path=FontSize}"/>
+            <Setter x:Uid="Setter_60" Property="FontStretch" Value="{Binding Path=FontStretch}"/>
+            <Setter x:Uid="Setter_61" Property="FontStyle" Value="{Binding Path=FontStyle}"/>
+            <Setter x:Uid="Setter_62" Property="FontWeight" Value="{Binding Path=FontWeight}"/>
+            <Setter x:Uid="Setter_64" Property="Language" Value="{Binding Path=Language}"/>
+            <Setter x:Uid="Setter_65" Property="SnapsToDevicePixels" Value="{Binding Path=SnapsToDevicePixels}"/>
+            <Setter x:Uid="Setter_92" Property="Height" Value="{Binding Path=Height}"/>
+            <Setter x:Uid="Setter_94" Property="MinHeight" Value="{Binding Path=MinHeight}" />
+            <Setter x:Uid="Setter_95" Property="MaxHeight" Value="{Binding Path=MaxHeight}" />
+            <Setter x:Uid="Setter_98" Property="VerticalAlignment" Value="{Binding Path=VerticalContentAlignment}" />
+            <Setter x:Uid="Setter_99" Property="ClipToBounds" Value="{Binding Path=ClipToBounds, RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}" />
+        </Style>
+
+        <DataTemplate x:Uid="DataTemplate_1" x:Key="textblock">
+            <Grid x:Uid="Grid_1" DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}" Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type Control}, AncestorLevel=2}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_1" Width="*"/>
+                    <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Uid="Border_2" Style="{StaticResource borderStyle}" Grid.Column="0"
+                  BorderBrush="{DynamicResource WorkflowViewElementBorderBrush}"
+                  BorderThickness="1,1,1,1"
+                  CornerRadius="1" HorizontalAlignment="Stretch">
+                    <TextBlock x:Uid="TextBlock_2" Style="{StaticResource textBlockStyle}" AutomationProperties.AutomationId="{Binding Path=Name}" 
+                       Focusable="True" GotKeyboardFocus="OnGotTextBlockFocus" Loaded="OnTextBlockLoaded"
+                       MouseLeftButtonDown="OnTextBlockMouseLeftButtonDown" Name="expresionTextBlock"/>
+                </Border>
+                <Rectangle x:Uid="Rectangle_2"  Style="{StaticResource errorStyle}" Grid.Column="1"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Uid="DataTemplate_3" x:Key="expressioneditor">
+            <Grid x:Uid="Grid_3" DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}" HorizontalAlignment="{Binding Path=HorizontalAlignment}" Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type Control}, AncestorLevel=2}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_5" Width="*"/>
+                    <ColumnDefinition x:Uid="ColumnDefinition_6" Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Uid="Border_5" Grid.Column="0" CornerRadius="1"
+                 BorderBrush="{DynamicResource WorkflowViewElementBorderBrush}"
+                 BorderThickness="1,1,1,1"
+                 Loaded="OnEditorLoaded" Unloaded="OnEditorUnloaded" MouseRightButtonDown="OnEditorUnloaded" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 GotKeyboardFocus="OnGotEditingFocus"  Background="{DynamicResource DesignerViewBackground}" />
+                <Rectangle x:Uid="Rectangle_6" Grid.Column="1" Style="{StaticResource errorStyle}"/>
+            </Grid>
+        </DataTemplate>
+
+    </sape:TextualExpressionEditor.Resources>
+    <Grid x:Name="grid" x:Uid="Grid_3" DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:RoslynExpressionEditor}}}" HorizontalAlignment="{Binding Path=HorizontalAlignment}" Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type Control}, AncestorLevel=2}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Uid="ColumnDefinition_5" Width="*"/>
+            <ColumnDefinition x:Uid="ColumnDefinition_6" Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="1" Margin="2" BorderBrush="{DynamicResource WorkflowViewElementBorderBrush}" Grid.Column="0" x:Name="border">
+            <ContentPresenter x:Name="innerControl" />
+        </Border>
+        <Rectangle x:Uid="Rectangle_6" Grid.Column="1" Style="{StaticResource errorStyle}" />
+    </Grid>
+</sape:TextualExpressionEditor>
