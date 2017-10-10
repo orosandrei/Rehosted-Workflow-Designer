@@ -16,7 +16,7 @@ The solution contains:
 * GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event
 
 ## Demo Workflows ##
-###AzureVmPowerOperations.xaml###
+### AzureVmPowerOperations.xaml ###
 * InArguments - VM & Service names
 * OutArguments - ActionPerformed
 * the workflow connects to Azure & changes the VM power state: if Powered On it will be power off, else powered on
