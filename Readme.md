@@ -50,3 +50,4 @@ The solution contains:
 * [Roslyn C# Expression Editor](https://github.com/dmetzgar/wf-rehost-roslyn)
 * [Custom Expression Editor](https://blogs.msdn.microsoft.com/cathyk/2009/11/05/implementing-a-custom-expression-editor/)
 * [Expression Editing Mechanics](https://blogs.msdn.microsoft.com/cathyk/2009/11/09/expression-editing-mechanics/)
+* [Avalon Edit](https://github.com/icsharpcode/AvalonEdit)
