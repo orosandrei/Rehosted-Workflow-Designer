@@ -4,6 +4,7 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.VisualBasic;
 using RehostedWorkflowDesigner.Helpers;
 using System;
 using System.Activities.Presentation.Model;
@@ -40,17 +41,31 @@ namespace RehostedWorkflowDesigner.VbExpressionEditor
             {
                 try
                 {
-                    string startString = @"using System; using System.Collections.Generic; using System.Text; 
-                                            namespace SomeNamespace { public class NotAProgram { private void SomeMethod() { "
-                                            + "var blah = ";
-                    string endString = " ; } } }";
+                    string startString = @"
+Imports System
+Imports System.Collections.Generic
+Imports System.Text
+
+Namespace SomeNamespace
+
+Public Class NotAProgram 
+Private Sub SomeMethod()
+"
++ "var blah = ";
+           
+         string endString = @" 
+
+        End Sub
+    End Class
+End Namespace                       
+";
                     string codeString = startString + this.Text.Substring(0, this.CaretOffset) + endString;
 
-                    var tree = CSharpSyntaxTree.ParseText(codeString);
+                    var tree = VisualBasicSyntaxTree.ParseText(codeString);
 
-                    var root = (CompilationUnitSyntax)tree.GetRoot();
+                    var root = (Microsoft.CodeAnalysis.VisualBasic.Syntax.CompilationUnitSyntax)tree.GetRoot();
 
-                    var compilation = CSharpCompilation.Create("CustomIntellisense")
+                    var compilation = VisualBasicCompilation.Create("CustomIntellisense")
                                                .AddReferences(MetadataReference.CreateFromFile(typeof(object).Assembly.Location))
                                                .AddSyntaxTrees(tree);
 
