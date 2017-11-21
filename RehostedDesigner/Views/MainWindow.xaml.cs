@@ -102,7 +102,7 @@ namespace RehostedWorkflowDesigner.Views
                 //load dependency
                 AppDomain.CurrentDomain.Load("Twilio.Api");
                 // load Custom Activity Libraries into current domain
-                AppDomain.CurrentDomain.Load("MeetupActivityLibrary");
+                //AppDomain.CurrentDomain.Load("MeetupActivityLibrary");
                 // load System Activity Libraries into current domain; uncomment more if libraries below available on your system
                 AppDomain.CurrentDomain.Load("System.Activities");
                 AppDomain.CurrentDomain.Load("System.ServiceModel.Activities");
@@ -152,7 +152,7 @@ namespace RehostedWorkflowDesigner.Views
                                         && !activityType.IsNested
                                         && !activityType.IsAbstract
                                         && (activityType.GetConstructor(Type.EmptyTypes) != null)
-                                        //&& !activityType.Name.Contains('`')
+                                        && !activityType.Name.Contains('`') //optional, for extra cleanup
                                     orderby
                                         activityType.Name
                                     select
@@ -294,6 +294,17 @@ namespace RehostedWorkflowDesigner.Views
         {
             _currentWorkflowFile = String.Empty;
             CustomWfDesigner.NewInstance();
+            WfDesignerBorder.Child = CustomWfDesigner.Instance.View;
+            WfPropertyBorder.Child = CustomWfDesigner.Instance.PropertyInspectorView;
+        }
+
+        /// <summary>
+        /// Creates a new Workflow Designer instance and loads the Default Workflow 
+        /// </summary>
+        private void CmdWorkflowNewVB(object sender, ExecutedRoutedEventArgs e)
+        {
+            _currentWorkflowFile = String.Empty;
+            CustomWfDesigner.NewInstanceVB();
             WfDesignerBorder.Child = CustomWfDesigner.Instance.View;
             WfPropertyBorder.Child = CustomWfDesigner.Instance.PropertyInspectorView;
         }

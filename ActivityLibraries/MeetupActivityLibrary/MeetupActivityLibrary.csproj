@@ -48,54 +48,93 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Activities.Build" />
+    <Reference Include="Microsoft.Activities.Build">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Microsoft.PowerShell.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Activities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Powershell.Core.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.Powershell.Core.Activities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.PowerShell.Diagnostics.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Diagnostics.Activities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.PowerShell.Management.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Management.Activities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.PowerShell.Security.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Security.Activities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.PowerShell.Utility.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Utility.Activities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Powershell.Workflow.ServiceCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.Powershell.Workflow.ServiceCore.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Activities" />
-    <Reference Include="System.Activities.Core.Presentation" />
-    <Reference Include="System.Activities.DurableInstancing" />
-    <Reference Include="System.Activities.Presentation" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel.Activities" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Workflow.Activities" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Activities">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Activities.Core.Presentation">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Activities.DurableInstancing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Activities.Presentation">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Activities">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Workflow.Activities">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\Meetup\GetGroupMembers.cs" />

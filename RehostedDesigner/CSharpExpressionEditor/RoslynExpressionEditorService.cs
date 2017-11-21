@@ -4,6 +4,7 @@ using System.Activities.Presentation.Hosting;
 using System.Activities.Presentation.Model;
 using System.Activities.Presentation.View;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 
@@ -60,15 +61,21 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
 
         public void UpdateContext(AssemblyContextControlItem assemblies, ImportedNamespaceContextItem importedNamespaces)
         {
-            var references = new List<MetadataReference>();
-
+            var references = new List<MetadataReference>();            
+            
             foreach (var assembly in assemblies.AllAssemblyNamesInContext)
             {
+                System.Reflection.Assembly asm = null;
                 try
                 {
-                    references.Add(MetadataReference.CreateFromFile(System.Reflection.Assembly.Load(assembly).Location));
+                    asm = System.Reflection.Assembly.Load(assembly);
                 }
-                catch { }
+                catch (Exception ex) {
+                    //Console.WriteLine(ex.ToString());
+                }
+                if(asm != null)
+                    if(File.Exists(asm.Location))
+                        references.Add(MetadataReference.CreateFromFile(asm.Location));
             }
 
             baseAssemblies = references.ToArray();

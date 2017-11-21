@@ -114,7 +114,7 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
                     var concreteExpType = typeof(Literal<>).MakeGenericType(type);
                     return (ActivityWithResult)Activator.CreateInstance(concreteExpType, converterValue);
                 }
-                catch { }
+                catch (Exception e) { Console.WriteLine(e.ToString()); }
             }
 
             return null;

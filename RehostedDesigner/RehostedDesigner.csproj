@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RehostedWorkflowDesigner</RootNamespace>
     <AssemblyName>Rehosted WF Designer</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -95,13 +96,11 @@
       <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.3.2\lib\net45\Microsoft.CodeAnalysis.Workspaces.Desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RestSharp, Version=106.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.0.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -118,11 +117,16 @@
     <Reference Include="System.Activities.Presentation">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Collections">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.3.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Composition.AttributedModel, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
       <Private>True</Private>
@@ -160,6 +164,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ServiceModel.Activities">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Controls.Ribbon">
@@ -258,7 +265,7 @@
     <Compile Include="CSharpExpressionEditor\ExpressionValidationContext.cs" />
     <Compile Include="CSharpExpressionEditor\LineToHeightConverter.cs" />
     <Compile Include="CSharpExpressionEditor\ParserContext.cs" />
-    <Compile Include="CSharpExpressionEditor\QueryCompletionData.cs" />
+    <Compile Include="Helpers\QueryCompletionData.cs" />
     <Compile Include="CSharpExpressionEditor\RoslynExpressionEditor.xaml.cs">
       <DependentUpon>RoslynExpressionEditor.xaml</DependentUpon>
     </Compile>
@@ -268,6 +275,8 @@
     <Compile Include="Helpers\CustomCommands.cs" />
     <Compile Include="Helpers\CustomTrackingParticipant.cs" />
     <Compile Include="Helpers\CustomWfDesigner.cs" />
+    <Compile Include="VbExpressionEditor\VbExpressionEditorInstance.cs" />
+    <Compile Include="VbExpressionEditor\VbExpressionEditorService.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -331,10 +340,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ExpressionEditor\Event.png" />
-    <Resource Include="Resources\ExpressionEditor\Field.png" />
-    <Resource Include="Resources\ExpressionEditor\Method.png" />
-    <Resource Include="Resources\ExpressionEditor\Property.png" />
+    <EmbeddedResource Include="Resources\ExpressionEditor\Event.png" />
+    <EmbeddedResource Include="Resources\ExpressionEditor\Field.png" />
+    <EmbeddedResource Include="Resources\ExpressionEditor\Method.png" />
+    <EmbeddedResource Include="Resources\ExpressionEditor\Property.png" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

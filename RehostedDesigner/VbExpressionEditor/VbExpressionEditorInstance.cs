@@ -10,52 +10,28 @@ using System.Activities.Presentation.Model;
 using System.Activities.Presentation.View;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace RehostedWorkflowDesigner.CSharpExpressionEditor
+namespace RehostedWorkflowDesigner.VbExpressionEditor
 {
-    public class RoslynExpressionEditorInstance : TextEditor, IExpressionEditorInstance
+    public class VbExpressionEditorInstance : TextEditor, IExpressionEditorInstance
     {
         private CompletionWindow completionWindow;
-        private string variableDeclarations;
 
-        public RoslynExpressionEditorInstance()
+        private TextBox textBox = new TextBox();
+
+        public VbExpressionEditorInstance()
         {
             this.TextArea.TextEntering += TextArea_TextEntering;
             this.TextArea.TextEntered += TextArea_TextEntered;
-            this.TextArea.LostKeyboardFocus += TextArea_LostFocus; // Need to detach events.
+            this.TextArea.LostKeyboardFocus += TextArea_LostFocus;
 
-            this.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
+            this.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("VB");
             this.FontFamily = new System.Windows.Media.FontFamily("Consolas");
             this.FontSize = 12;
-        }
-
-        public RoslynExpressionEditorInstance(Size initialSize) : this()
-        {
-            this.Width = initialSize.Width;
-            this.Height = initialSize.Height;
-        }
-
-        public void UpdateInstance(List<ModelItem> variables, string text)
-        {
-            this.Text = text;
-            if (variables != null)
-                try
-                {
-                    if (variables.Count > 0) {
-                        var variablesSerialized = variables.Select(v =>
-                        {
-                           return (v.GetCurrentValue() is System.Activities.Variable c) ? (c.Type.FullName + " " + c.Name + ";\n") : "";
-                        }).ToArray();
-                        this.variableDeclarations = string.Join("", variablesSerialized);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
         }
 
         private void TextArea_TextEntered(object sender, System.Windows.Input.TextCompositionEventArgs e)
@@ -64,9 +40,9 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
             {
                 try
                 {
-                    string startString = RoslynExpressionEditorService.Instance.UsingNamespaces 
-                        + "using System; using System.Collections.Generic; using System.Text; namespace SomeNamespace { public class NotAProgram { private void SomeMethod() { "
-                        + variableDeclarations + "var blah = ";
+                    string startString = @"using System; using System.Collections.Generic; using System.Text; 
+                                            namespace SomeNamespace { public class NotAProgram { private void SomeMethod() { "
+                                            + "var blah = ";
                     string endString = " ; } } }";
                     string codeString = startString + this.Text.Substring(0, this.CaretOffset) + endString;
 
@@ -107,9 +83,18 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
                         };
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Console.WriteLine(ex.ToString());
                 }
+            }
+        }
+
+        private void TextArea_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.LostAggregateFocus != null)
+            {
+                this.LostAggregateFocus(sender, e);
             }
         }
 
@@ -126,14 +111,6 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
             }
             // Do not set e.Handled=true.
             // We still want to insert the character that was typed.
-        }
-
-        private void TextArea_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.LostAggregateFocus != null)
-            {
-                this.LostAggregateFocus(sender, e);
-            }
         }
 
         #region IExpressionEditorInstance implicit

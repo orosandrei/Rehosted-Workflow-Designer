@@ -492,7 +492,9 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
                     }
                     catch (Exception ex)
                     {
-                        throw ex;
+                        Console.WriteLine(ex.ToString());
+                        //if exception is thrown, it will fault the wf execution
+                       // throw ex;
                     }
 
                     if (ExpressionEditorInstance != null)

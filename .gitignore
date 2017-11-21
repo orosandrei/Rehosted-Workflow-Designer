@@ -67,3 +67,4 @@ packages/
 
 #Test files
 *.testsettings
+/.vs/RehostedWFdesignerShowcase/v15

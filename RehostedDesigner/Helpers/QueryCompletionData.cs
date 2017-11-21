@@ -6,7 +6,7 @@ using System;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace RehostedWorkflowDesigner.CSharpExpressionEditor
+namespace RehostedWorkflowDesigner.Helpers
 {
     public class QueryCompletionData : ICompletionData
     {
@@ -27,7 +27,7 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
 
         static internal ImageSource GetImageSourceFromResource(string resourceName)
         {
-            return BitmapFrame.Create(typeof(QueryCompletionData).Assembly.GetManifestResourceStream(typeof(QueryCompletionData).Namespace + "." + resourceName));
+            return BitmapFrame.Create(typeof(QueryCompletionData).Assembly.GetManifestResourceStream("RehostedWorkflowDesigner.Resources.ExpressionEditor." + resourceName));
         }
 
         public QueryCompletionData(string name, ISymbol[] symbols)
@@ -57,6 +57,7 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
         }
 
         public string Text { get; private set; }
+        public string HintText { get; private set; }
 
         // Use this property if you want to show a fancy UIElement in the list.
         public object Content

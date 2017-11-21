@@ -7,6 +7,7 @@
         <CommandBinding Command="ApplicationCommands.Open" Executed="CmdWorkflowOpen"/>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CmdWorkflowSave"/>
         <CommandBinding Command="mw:CustomCommands.CmdWfNewCSharp" Executed="CmdWorkflowNewCSharp" />
+        <CommandBinding Command="mw:CustomCommands.CmdWfNewVB" Executed="CmdWorkflowNewVB" />
         <CommandBinding Command="mw:CustomCommands.CmdWfRun" Executed="CmdWorkflowRun" />
         <CommandBinding Command="mw:CustomCommands.CmdWfStop" Executed="CmdWorkflowStop" />
     </Window.CommandBindings>  
@@ -42,6 +43,7 @@
                 <RibbonGroup x:Name="GroupWorkflowFile" Header="File">
                     <RibbonMenuButton x:Name="ButtonWorkflowNew" Label="New" LargeImageSource="/Rehosted WF Designer;component/Resources/Menu/new.png">
                         <RibbonMenuItem x:Name="ButtonWorkflowNewVB" Command="ApplicationCommands.New" Header="Default (VB ExpressionEditor)"/>
+                        <RibbonMenuItem x:Name="ButtonWorkflowNewVbIntellisense" Command="mw:CustomCommands.CmdWfNewVB" Header="Custom (VB Intellisense ExpressionEditor)" IsEnabled="True"/>
                         <RibbonMenuItem x:Name="ButtonWorkflowNewCSharp" Command="mw:CustomCommands.CmdWfNewCSharp" Header="Custom (C# ExpressionEditor)" IsEnabled="True"/>
                     </RibbonMenuButton>
                     <RibbonButton x:Name="ButtonWorkflowOpen" Command="ApplicationCommands.Open" Label="Open" LargeImageSource="/Rehosted WF Designer;component/Resources/Menu/open.png" />
