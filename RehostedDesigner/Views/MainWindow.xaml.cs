@@ -230,7 +230,13 @@ namespace RehostedWorkflowDesigner.Views
             //get workflow source from designer
             CustomWfDesigner.Instance.Flush();
             MemoryStream workflowStream = new MemoryStream(ASCIIEncoding.Default.GetBytes(CustomWfDesigner.Instance.Text));
-            DynamicActivity activityExecute = ActivityXamlServices.Load(workflowStream) as DynamicActivity;
+
+            ActivityXamlServicesSettings settings = new ActivityXamlServicesSettings()
+            {
+                CompileExpressions = true
+            };
+
+            DynamicActivity activityExecute = ActivityXamlServices.Load(workflowStream, settings) as DynamicActivity;
 
             //configure workflow application
             consoleExecutionLog.Text = String.Empty;
