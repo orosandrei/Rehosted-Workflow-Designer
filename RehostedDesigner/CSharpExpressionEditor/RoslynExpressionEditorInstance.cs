@@ -44,12 +44,18 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
             if (variables != null)
                 try
                 {
-                    if (variables.Count > 0) {
-                        var variablesSerialized = variables.Select(v =>
+                    if (variables.Count > 0)
+                    {
+                        this.variableDeclarations = string.Join("", variables.Select(v =>
                         {
-                           return (v.GetCurrentValue() is System.Activities.Variable c) ? (c.Type.FullName + " " + c.Name + ";\n") : "";
-                        }).ToArray();
-                        this.variableDeclarations = string.Join("", variablesSerialized);
+                            var c = v.GetCurrentValue() as System.Activities.Variable;
+                            if (c != null)
+                                return c.Type.FullName + " " + c.Name + ";\n";
+                            var d = v.GetCurrentValue() as System.Activities.DelegateArgument;
+                            if (d != null)
+                                return d.Type.FullName + " " + d.Name + ";\n";
+                            return null;
+                        }).ToArray());
                     }
                 }
                 catch (Exception ex)
@@ -64,7 +70,7 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
             {
                 try
                 {
-                    string startString = RoslynExpressionEditorService.Instance.UsingNamespaces 
+                    string startString = RoslynExpressionEditorService.Instance.UsingNamespaces
                         + "using System; using System.Collections.Generic; using System.Text; namespace SomeNamespace { public class NotAProgram { private void SomeMethod() { "
                         + variableDeclarations + "var blah = ";
                     string endString = " ; } } }";
@@ -107,7 +113,8 @@ namespace RehostedWorkflowDesigner.CSharpExpressionEditor
                         };
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Console.WriteLine(ex.ToString());
                 }
             }
