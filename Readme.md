@@ -41,9 +41,9 @@ The solution contains:
 
 * [Windows Workflow Foundation and .Net Core](https://andreioros.com/blog/windows-workflow-foundation-net-core/)
 * [Windows Workflow Foundation in 2017 (overview)](https://andreioros.com/blog/windows-workflow-foundation-2017/)
-* Blog post about the WF Designer demo &amp; [Windows Workflow Foundation](http://andreioros.com/blog/windows-workflow-foundation-rehosted-designer/)
-* (My presentation at Microsoft Summit 2015) [Introduction to Windows Workflow Foundation](http://www.slideshare.net/orosandrei/windows-workflow-foundation-54773529)
-* Project Showcased at [Microsoft Summit 2015](http://andreioros.com/blog/workflow-foundation-microsoft-summit/#more-92) & [Timisoara .NET Meetup 2](http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/)
+* blog post about the WF Designer demo &amp; [Windows Workflow Foundation Rehosted Designer](http://andreioros.com/blog/windows-workflow-foundation-rehosted-designer/)
+* my WF presentation at Microsoft Summit 2015 [Introduction to Windows Workflow Foundation](http://www.slideshare.net/orosandrei/windows-workflow-foundation-54773529)
+* project showcased at [Microsoft Summit 2015](http://andreioros.com/blog/workflow-foundation-microsoft-summit/#more-92) & [Timisoara .NET Meetup 2](http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/)
 * Twitter [@orosandrei](http://twitter.com/orosandrei)
 
 ***
