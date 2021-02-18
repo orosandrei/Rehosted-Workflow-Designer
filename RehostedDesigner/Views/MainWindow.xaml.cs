@@ -13,14 +13,10 @@ using Microsoft.Win32;
 using RehostedWorkflowDesigner.Helpers;
 using System.ComponentModel;
 using System.Timers;
-using Twilio;
-using System.Activities.Presentation;
-using System.Runtime.Versioning;
 
 namespace RehostedWorkflowDesigner.Views
 {
-
-    public partial class MainWindow : INotifyPropertyChanged
+	public partial class MainWindow : INotifyPropertyChanged
     {
         private WorkflowApplication _wfApp;
         private ToolboxControl _wfToolbox;
@@ -43,7 +39,6 @@ namespace RehostedWorkflowDesigner.Views
             //initialize designer
             WfDesignerBorder.Child = CustomWfDesigner.Instance.View;
             WfPropertyBorder.Child = CustomWfDesigner.Instance.PropertyInspectorView;
-
         }
 
 
@@ -265,7 +260,6 @@ namespace RehostedWorkflowDesigner.Views
                 _timer.Stop();
                 UpdateTrackingData();
             }
-
         }
 
 
