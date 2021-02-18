@@ -265,6 +265,8 @@
     <Compile Include="CSharpExpressionEditor\ExpressionValidationContext.cs" />
     <Compile Include="CSharpExpressionEditor\LineToHeightConverter.cs" />
     <Compile Include="CSharpExpressionEditor\ParserContext.cs" />
+    <Compile Include="Helpers\ConsoleWriter.cs" />
+    <Compile Include="Helpers\ConsoleWriterEventArgs.cs" />
     <Compile Include="Helpers\QueryCompletionData.cs" />
     <Compile Include="CSharpExpressionEditor\RoslynExpressionEditor.xaml.cs">
       <DependentUpon>RoslynExpressionEditor.xaml</DependentUpon>
