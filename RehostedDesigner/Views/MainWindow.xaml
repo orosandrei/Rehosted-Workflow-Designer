@@ -64,8 +64,8 @@
             <StatusBarItem x:Name="LabelStatusBar" Foreground="White" FontSize="12">
             </StatusBarItem>
         </StatusBar>
-        <TextBox Text="{Binding ExecutionLog, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" x:Name="consoleExecutionLog" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="3,40,0,0" HorizontalAlignment="Left" Width="329" TextChanged="consoleExecutionLog_TextChanged"  />
-        <TextBox x:Name="consoleOutput" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="348,40,3,0" />
+        <TextBox Text="{Binding ExecutionLog, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" x:Name="ConsoleExecutionLog" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="3,40,0,0" HorizontalAlignment="Left" Width="329" TextChanged="ConsoleExecutionLog_TextChanged"  />
+        <TextBox x:Name="ConsoleOutput" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="348,40,3,0" />
         <Label Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="34" Content="Execution Log" Margin="3,15,0,0" FontWeight="Bold" />
         <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Height="34" Content="Output" Margin="348,15,0,0" FontWeight="Bold" />
 
